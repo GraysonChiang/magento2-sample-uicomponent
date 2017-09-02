@@ -1,5 +1,4 @@
 <?php
-namespace Turiknox\Sample\Model\Data\Source;
 /*
  * Turiknox_Sample
 
@@ -9,6 +8,8 @@ namespace Turiknox\Sample\Model\Data\Source;
  * @license    https://github.com/Turiknox/magento2-sample-uicomponent/blob/master/LICENSE.md
  * @version    1.0.0
  */
+namespace Turiknox\Sample\Model\Data\Source;
+
 use Magento\Framework\Data\OptionSourceInterface;
 
 class Status implements OptionSourceInterface

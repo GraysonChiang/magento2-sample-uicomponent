@@ -1,5 +1,4 @@
 <?php
-namespace Turiknox\Sample\Api;
 /*
  * Turiknox_Sample
 
@@ -9,6 +8,8 @@ namespace Turiknox\Sample\Api;
  * @license    https://github.com/Turiknox/magento2-sample-uicomponent/blob/master/LICENSE.md
  * @version    1.0.0
  */
+namespace Turiknox\Sample\Api;
+
 use Magento\Framework\Api\SearchCriteriaInterface;
 use Turiknox\Sample\Api\Data\DataInterface;
 

@@ -1,5 +1,4 @@
 <?php
-namespace Turiknox\Sample\Controller\Adminhtml\Data;
 /*
  * Turiknox_Sample
 
@@ -9,6 +8,8 @@ namespace Turiknox\Sample\Controller\Adminhtml\Data;
  * @license    https://github.com/Turiknox/magento2-sample-uicomponent/blob/master/LICENSE.md
  * @version    1.0.0
  */
+namespace Turiknox\Sample\Controller\Adminhtml\Data;
+
 use Turiknox\Sample\Model\Data;
 
 class MassDelete extends MassAction
@@ -19,7 +20,7 @@ class MassDelete extends MassAction
      */
     protected function massAction(Data $data)
     {
-        $this->_dataRepository->delete($data);
+        $this->dataRepository->delete($data);
         return $this;
     }
 }

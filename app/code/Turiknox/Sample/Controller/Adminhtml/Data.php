@@ -1,5 +1,4 @@
 <?php
-namespace Turiknox\Sample\Controller\Adminhtml;
 /*
  * Turiknox_Sample
 
@@ -9,6 +8,8 @@ namespace Turiknox\Sample\Controller\Adminhtml;
  * @license    https://github.com/Turiknox/magento2-sample-uicomponent/blob/master/LICENSE.md
  * @version    1.0.0
  */
+namespace Turiknox\Sample\Controller\Adminhtml;
+
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
 use Magento\Framework\Registry;
@@ -23,32 +24,32 @@ abstract class Data extends Action
      */
     const ACTION_RESOURCE = 'Turiknox_Sample::data';
     /**
-     * Data repostory
+     * Data repository
      *
      * @var DataRepositoryInterface
      */
-    protected $_dataRepository;
+    protected $dataRepository;
 
     /**
      * Core registry
      *
      * @var Registry
      */
-    protected $_coreRegistry;
+    protected $coreRegistry;
 
     /**
      * Result Page Factory
      *
      * @var PageFactory
      */
-    protected $_resultPageFactory;
+    protected $resultPageFactory;
 
     /**
      * Result Forward Factory
      *
      * @var ForwardFactory
      */
-    protected $_resultForwardFactory;
+    protected $resultForwardFactory;
 
     /**
      * Data constructor.
@@ -65,12 +66,11 @@ abstract class Data extends Action
         PageFactory $resultPageFactory,
         ForwardFactory $resultForwardFactory,
         Context $context
-
     ) {
-        $this->_coreRegistry         = $registry;
-        $this->_dataRepository       = $dataRepository;
-        $this->_resultPageFactory    = $resultPageFactory;
-        $this->_resultForwardFactory = $resultForwardFactory;
+        $this->coreRegistry         = $registry;
+        $this->dataRepository       = $dataRepository;
+        $this->resultPageFactory    = $resultPageFactory;
+        $this->resultForwardFactory = $resultForwardFactory;
         parent::__construct($context);
     }
 }

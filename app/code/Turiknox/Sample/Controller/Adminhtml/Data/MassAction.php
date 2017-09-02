@@ -1,5 +1,4 @@
 <?php
-namespace Turiknox\Sample\Controller\Adminhtml\Data;
 /*
  * Turiknox_Sample
 
@@ -9,6 +8,8 @@ namespace Turiknox\Sample\Controller\Adminhtml\Data;
  * @license    https://github.com/Turiknox/magento2-sample-uicomponent/blob/master/LICENSE.md
  * @version    1.0.0
  */
+namespace Turiknox\Sample\Controller\Adminhtml\Data;
+
 use Magento\Backend\App\Action\Context;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Registry;
@@ -25,30 +26,32 @@ abstract class MassAction extends Data
     /**
      * @var Filter
      */
-    protected $_filter;
+    protected $filter;
 
     /**
      * @var CollectionFactory
      */
-    protected $_collectionFactory;
+    protected $collectionFactory;
 
     /**
      * @var DataRepositoryInterface
      */
-    protected $_dataRepository;
+    protected $dataRepository;
 
     /**
      * @var ForwardFactory
      */
-    protected $_resultForwardFactory;
+    protected $resultForwardFactory;
+
     /**
      * @var string
      */
-    protected $_successMessage;
+    protected $successMessage;
+
     /**
      * @var string
      */
-    protected $_errorMessage;
+    protected $errorMessage;
 
     /**
      * MassAction constructor.
@@ -74,12 +77,12 @@ abstract class MassAction extends Data
         $successMessage,
         $errorMessage
     ) {
-        $this->_filter               = $filter;
-        $this->_dataRepository       = $dataRepository;
-        $this->_collectionFactory    = $collectionFactory;
-        $this->_resultForwardFactory = $resultForwardFactory;
-        $this->_successMessage       = $successMessage;
-        $this->_errorMessage         = $errorMessage;
+        $this->filter               = $filter;
+        $this->dataRepository       = $dataRepository;
+        $this->collectionFactory    = $collectionFactory;
+        $this->resultForwardFactory = $resultForwardFactory;
+        $this->successMessage       = $successMessage;
+        $this->errorMessage         = $errorMessage;
         parent::__construct($registry, $dataRepository, $resultPageFactory, $resultForwardFactory, $context);
     }
 
@@ -87,7 +90,7 @@ abstract class MassAction extends Data
      * @param DataModel $data
      * @return mixed
      */
-    protected abstract function massAction(DataModel $data);
+    abstract protected function massAction(DataModel $data);
 
     /**
      * @return \Magento\Framework\Controller\Result\Redirect
@@ -95,16 +98,16 @@ abstract class MassAction extends Data
     public function execute()
     {
         try {
-            $collection = $this->_filter->getCollection($this->_collectionFactory->create());
+            $collection = $this->filter->getCollection($this->collectionFactory->create());
             $collectionSize = $collection->getSize();
             foreach ($collection as $data) {
                 $this->massAction($data);
             }
-            $this->messageManager->addSuccessMessage(__($this->_successMessage, $collectionSize));
+            $this->messageManager->addSuccessMessage(__($this->successMessage, $collectionSize));
         } catch (LocalizedException $e) {
             $this->messageManager->addErrorMessage($e->getMessage());
         } catch (\Exception $e) {
-            $this->messageManager->addExceptionMessage($e, __($this->_errorMessage));
+            $this->messageManager->addExceptionMessage($e, __($this->errorMessage));
         }
         $redirectResult = $this->resultRedirectFactory->create();
         $redirectResult->setPath('sample/data/index');

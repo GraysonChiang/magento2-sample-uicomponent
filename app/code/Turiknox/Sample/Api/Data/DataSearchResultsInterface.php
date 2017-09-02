@@ -1,5 +1,4 @@
 <?php
-namespace Turiknox\Sample\Api\Data;
 /*
  * Turiknox_Sample
 
@@ -9,6 +8,8 @@ namespace Turiknox\Sample\Api\Data;
  * @license    https://github.com/Turiknox/magento2-sample-uicomponent/blob/master/LICENSE.md
  * @version    1.0.0
  */
+namespace Turiknox\Sample\Api\Data;
+
 use Magento\Framework\Api\SearchResultsInterface;
 
 interface DataSearchResultsInterface extends SearchResultsInterface

@@ -1,5 +1,4 @@
 <?php
-namespace Turiknox\Sample\Setup;
 /*
  * Turiknox_Sample
 
@@ -9,11 +8,14 @@ namespace Turiknox\Sample\Setup;
  * @license    https://github.com/Turiknox/magento2-sample-uicomponent/blob/master/LICENSE.md
  * @version    1.0.0
  */
+namespace Turiknox\Sample\Setup;
+
 use Magento\Framework\Setup\InstallDataInterface;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
 use Magento\Framework\Setup\ModuleContextInterface;
 
-class InstallData implements InstallDataInterface {
+class InstallData implements InstallDataInterface
+{
 
     /**
      * Install data

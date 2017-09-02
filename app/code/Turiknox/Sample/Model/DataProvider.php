@@ -1,5 +1,4 @@
 <?php
-namespace Turiknox\Sample\Model;
 /*
  * Turiknox_Sample
 
@@ -9,6 +8,8 @@ namespace Turiknox\Sample\Model;
  * @license    https://github.com/Turiknox/magento2-sample-uicomponent/blob/master/LICENSE.md
  * @version    1.0.0
  */
+namespace Turiknox\Sample\Model;
+
 use Magento\Framework\App\Request\DataPersistorInterface;
 use Magento\Ui\DataProvider\AbstractDataProvider;
 use Turiknox\Sample\Model\ResourceModel\Data\CollectionFactory;
@@ -52,7 +53,6 @@ class DataProvider extends AbstractDataProvider
         $this->dataPersistor = $dataPersistor;
         $this->meta           = $this->prepareMeta($this->meta);
         parent::__construct($name, $primaryFieldName, $requestFieldName, $meta, $data);
-
     }
 
     /**

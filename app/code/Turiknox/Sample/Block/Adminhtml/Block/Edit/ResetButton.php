@@ -1,5 +1,4 @@
 <?php
-namespace Turiknox\Sample\Block\Adminhtml\Block\Edit;
 /*
  * Turiknox_Sample
 
@@ -9,11 +8,15 @@ namespace Turiknox\Sample\Block\Adminhtml\Block\Edit;
  * @license    https://github.com/Turiknox/magento2-sample-uicomponent/blob/master/LICENSE.md
  * @version    1.0.0
  */
+namespace Turiknox\Sample\Block\Adminhtml\Block\Edit;
+
 use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
 
 class ResetButton implements ButtonProviderInterface
 {
     /**
+     * Get button attributes
+     *
      * @return array
      */
     public function getButtonData()

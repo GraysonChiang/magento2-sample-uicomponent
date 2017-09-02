@@ -1,5 +1,4 @@
 <?php
-namespace Turiknox\Sample\Api\Data;
 /*
  * Turiknox_Sample
 
@@ -9,6 +8,8 @@ namespace Turiknox\Sample\Api\Data;
  * @license    https://github.com/Turiknox/magento2-sample-uicomponent/blob/master/LICENSE.md
  * @version    1.0.0
  */
+namespace Turiknox\Sample\Api\Data;
+
 interface DataInterface
 {
     /**
@@ -28,7 +29,6 @@ interface DataInterface
      * @return int|null
      */
     public function getId();
-
 
     /**
      * Set ID
@@ -60,7 +60,6 @@ interface DataInterface
      */
     public function getDataDescription();
 
-
     /**
      * Set Data Description
      *
@@ -69,14 +68,12 @@ interface DataInterface
      */
     public function setDataDescription($description);
 
-
     /**
      * Get is active
      *
      * @return bool|int
      */
     public function getIsActive();
-
 
     /**
      * Set is active

@@ -1,5 +1,4 @@
 <?php
-namespace Turiknox\Sample\Controller\Adminhtml\Data;
 /*
  * Turiknox_Sample
 
@@ -9,6 +8,8 @@ namespace Turiknox\Sample\Controller\Adminhtml\Data;
  * @license    https://github.com/Turiknox/magento2-sample-uicomponent/blob/master/LICENSE.md
  * @version    1.0.0
  */
+namespace Turiknox\Sample\Controller\Adminhtml\Data;
+
 use Magento\Framework\Registry;
 use Magento\Framework\View\Result\PageFactory;
 use Magento\Backend\Model\View\Result\ForwardFactory;
@@ -25,23 +26,22 @@ class Save extends Data
     /**
      * @var Manager
      */
-    protected $_messageManager;
+    protected $messageManager;
 
     /**
      * @var DataRepositoryInterface
      */
-    protected $_dataRepository;
+    protected $dataRepository;
 
     /**
      * @var DataInterfaceFactory
      */
-    protected $_dataFactory;
+    protected $dataFactory;
 
     /**
      * @var DataObjectHelper
      */
-    protected $_dataObjectHelper;
-
+    protected $dataObjectHelper;
 
     public function __construct(
         Registry $registry,
@@ -52,12 +52,11 @@ class Save extends Data
         DataInterfaceFactory $dataFactory,
         DataObjectHelper $dataObjectHelper,
         Context $context
-    )
-    {
-        $this->_messageManager   = $messageManager;
-        $this->_dataFactory      = $dataFactory;
-        $this->_dataRepository   = $dataRepository;
-        $this->_dataObjectHelper  = $dataObjectHelper;
+    ) {
+        $this->messageManager   = $messageManager;
+        $this->dataFactory      = $dataFactory;
+        $this->dataRepository   = $dataRepository;
+        $this->dataObjectHelper  = $dataObjectHelper;
         parent::__construct($registry, $dataRepository, $resultPageFactory, $resultForwardFactory, $context);
     }
 
@@ -74,27 +73,27 @@ class Save extends Data
         if ($data) {
             $id = $this->getRequest()->getParam('data_id');
             if ($id) {
-                $model = $this->_dataRepository->getById($id);
+                $model = $this->dataRepository->getById($id);
             } else {
                 unset($data['data_id']);
-                $model = $this->_dataFactory->create();
+                $model = $this->dataFactory->create();
             }
 
             try {
-                $this->_dataObjectHelper->populateWithArray($model, $data, DataInterface::class);
-                $this->_dataRepository->save($model);
-                $this->_messageManager->addSuccessMessage(__('You saved this data.'));
+                $this->dataObjectHelper->populateWithArray($model, $data, DataInterface::class);
+                $this->dataRepository->save($model);
+                $this->messageManager->addSuccessMessage(__('You saved this data.'));
                 $this->_getSession()->setFormData(false);
                 if ($this->getRequest()->getParam('back')) {
                     return $resultRedirect->setPath('*/*/edit', ['data_id' => $model->getId(), '_current' => true]);
                 }
                 return $resultRedirect->setPath('*/*/');
             } catch (\Magento\Framework\Exception\LocalizedException $e) {
-                $this->_messageManager->addErrorMessage($e->getMessage());
+                $this->messageManager->addErrorMessage($e->getMessage());
             } catch (\RuntimeException $e) {
-                $this->_messageManager->addErrorMessage($e->getMessage());
+                $this->messageManager->addErrorMessage($e->getMessage());
             } catch (\Exception $e) {
-                $this->_messageManager->addException($e, __('Something went wrong while saving the data.'));
+                $this->messageManager->addException($e, __('Something went wrong while saving the data.'));
             }
 
             $this->_getSession()->setFormData($data);

@@ -1,5 +1,4 @@
 <?php
-namespace Turiknox\Sample\Setup;
 /*
  * Turiknox_Sample
 
@@ -9,6 +8,8 @@ namespace Turiknox\Sample\Setup;
  * @license    https://github.com/Turiknox/magento2-sample-uicomponent/blob/master/LICENSE.md
  * @version    1.0.0
  */
+namespace Turiknox\Sample\Setup;
+
 use Magento\Framework\Model\AbstractModel;
 use Magento\Framework\Setup\ModuleContextInterface;
 use Magento\Framework\Setup\SchemaSetupInterface;
@@ -21,11 +22,11 @@ class Uninstall implements UninstallInterface
     /**
      * @var CollectionFactory
      */
-    protected $_collectionFactory;
+    protected $collectionFactory;
     /**
      * @var Data
      */
-    protected $_configResource;
+    protected $configResource;
 
     /**
      * @param CollectionFactory $collectionFactory
@@ -34,14 +35,13 @@ class Uninstall implements UninstallInterface
     public function __construct(
         CollectionFactory $collectionFactory,
         Data $configResource
-    )
-    {
-        $this->_collectionFactory = $collectionFactory;
-        $this->_configResource    = $configResource;
+    ) {
+        $this->collectionFactory = $collectionFactory;
+        $this->configResource    = $configResource;
     }
 
     /**
-     * Uninstall
+     * Drop sample table
      *
      * @param SchemaSetupInterface $setup
      * @param ModuleContextInterface $context
@@ -51,7 +51,7 @@ class Uninstall implements UninstallInterface
         if ($setup->tableExists('turiknox_sample_data')) {
             $setup->getConnection()->dropTable('turiknox_sample_data');
         }
-        $collection = $this->_collectionFactory->create()
+        $collection = $this->collectionFactory->create()
             ->addPathFilter('turiknox_sample');
         foreach ($collection as $config) {
             $this->deleteConfig($config);
@@ -59,11 +59,12 @@ class Uninstall implements UninstallInterface
     }
 
     /**
+     * Delete system config
+     *
      * @param AbstractModel $config
-     * @throws \Exception
      */
     protected function deleteConfig(AbstractModel $config)
     {
-        $this->_configResource->delete($config);
+        $this->configResource->delete($config);
     }
 }

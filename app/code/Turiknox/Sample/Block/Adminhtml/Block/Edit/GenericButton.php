@@ -1,5 +1,4 @@
 <?php
-namespace Turiknox\Sample\Block\Adminhtml\Block\Edit;
 /*
  * Turiknox_Sample
 
@@ -9,6 +8,8 @@ namespace Turiknox\Sample\Block\Adminhtml\Block\Edit;
  * @license    https://github.com/Turiknox/magento2-sample-uicomponent/blob/master/LICENSE.md
  * @version    1.0.0
  */
+namespace Turiknox\Sample\Block\Adminhtml\Block\Edit;
+
 use Magento\Backend\Block\Widget\Context;
 use Magento\Framework\Exception\NoSuchEntityException;
 
@@ -21,6 +22,7 @@ class GenericButton
 
     /**
      * GenericButton constructor.
+     *
      * @param Context $context
      */
     public function __construct(
@@ -30,7 +32,9 @@ class GenericButton
     }
 
     /**
-     * @return mixed|null
+     * Get data_id parameter
+     *
+     * @return string|null
      */
     public function getDataId()
     {

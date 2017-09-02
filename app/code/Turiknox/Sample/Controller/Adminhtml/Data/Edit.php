@@ -1,5 +1,4 @@
 <?php
-namespace Turiknox\Sample\Controller\Adminhtml\Data;
 /*
  * Turiknox_Sample
 
@@ -9,6 +8,8 @@ namespace Turiknox\Sample\Controller\Adminhtml\Data;
  * @license    https://github.com/Turiknox/magento2-sample-uicomponent/blob/master/LICENSE.md
  * @version    1.0.0
  */
+namespace Turiknox\Sample\Controller\Adminhtml\Data;
+
 use Turiknox\Sample\Controller\Adminhtml\Data;
 
 class Edit extends Data
@@ -19,7 +20,7 @@ class Edit extends Data
     public function execute()
     {
         $dataId = $this->getRequest()->getParam('data_id');
-        $resultPage = $this->_resultPageFactory->create();
+        $resultPage = $this->resultPageFactory->create();
         $resultPage->setActiveMenu('Turiknox_Sample::data')
             ->addBreadcrumb(__('Data'), __('Data'))
             ->addBreadcrumb(__('Manage Data'), __('Manage Data'));
@@ -30,7 +31,7 @@ class Edit extends Data
         } else {
             $resultPage->addBreadcrumb(__('Edit Data'), __('Edit Data'));
             $resultPage->getConfig()->getTitle()->prepend(
-                $this->_dataRepository->getById($dataId)->getDataTitle()
+                $this->dataRepository->getById($dataId)->getDataTitle()
             );
         }
         return $resultPage;

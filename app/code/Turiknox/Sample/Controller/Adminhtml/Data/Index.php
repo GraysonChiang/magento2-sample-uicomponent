@@ -1,5 +1,4 @@
 <?php
-namespace Turiknox\Sample\Controller\Adminhtml\Data;
 /*
  * Turiknox_Sample
 
@@ -9,6 +8,8 @@ namespace Turiknox\Sample\Controller\Adminhtml\Data;
  * @license    https://github.com/Turiknox/magento2-sample-uicomponent/blob/master/LICENSE.md
  * @version    1.0.0
  */
+namespace Turiknox\Sample\Controller\Adminhtml\Data;
+
 use Turiknox\Sample\Controller\Adminhtml\Data;
 
 class Index extends Data
@@ -18,6 +19,6 @@ class Index extends Data
      */
     public function execute()
     {
-        return $this->_resultPageFactory->create();
+        return $this->resultPageFactory->create();
     }
 }

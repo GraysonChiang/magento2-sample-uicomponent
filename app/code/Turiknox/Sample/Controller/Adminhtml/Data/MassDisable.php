@@ -1,5 +1,4 @@
 <?php
-namespace Turiknox\Sample\Controller\Adminhtml\Data;
 /*
  * Turiknox_Sample
 
@@ -9,11 +8,12 @@ namespace Turiknox\Sample\Controller\Adminhtml\Data;
  * @license    https://github.com/Turiknox/magento2-sample-uicomponent/blob/master/LICENSE.md
  * @version    1.0.0
  */
+namespace Turiknox\Sample\Controller\Adminhtml\Data;
+
 use Turiknox\Sample\Model\Data;
 
 class MassDisable extends MassAction
 {
-
     /**
      * @param Data $data
      * @return $this
@@ -21,7 +21,7 @@ class MassDisable extends MassAction
     protected function massAction(Data $data)
     {
         $data->setIsActive(false);
-        $this->_dataRepository->save($data);
+        $this->dataRepository->save($data);
         return $this;
     }
 }

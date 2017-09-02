@@ -1,5 +1,4 @@
 <?php
-namespace Turiknox\Sample\Model\ResourceModel\Data;
 /*
  * Turiknox_Sample
 
@@ -9,6 +8,7 @@ namespace Turiknox\Sample\Model\ResourceModel\Data;
  * @license    https://github.com/Turiknox/magento2-sample-uicomponent/blob/master/LICENSE.md
  * @version    1.0.0
  */
+namespace Turiknox\Sample\Model\ResourceModel\Data;
 
 use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
 
@@ -16,6 +16,7 @@ class Collection extends AbstractCollection
 {
     /**
      * @var string
+     * @codingStandardsIgnoreStart
      */
     protected $_idFieldName = 'data_id';
 
@@ -24,6 +25,7 @@ class Collection extends AbstractCollection
      */
     protected function _construct()
     {
-        $this->_init('Turiknox\Sample\Model\Data','Turiknox\Sample\Model\ResourceModel\Data');
+        // @codingStandardsIgnoreEnd
+        $this->_init('Turiknox\Sample\Model\Data', 'Turiknox\Sample\Model\ResourceModel\Data');
     }
 }

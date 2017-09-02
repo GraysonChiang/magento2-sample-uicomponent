@@ -1,5 +1,4 @@
 <?php
-namespace Turiknox\Sample\Ui\Component\Listing\Column;
 /*
  * Turiknox_Sample
 
@@ -9,6 +8,8 @@ namespace Turiknox\Sample\Ui\Component\Listing\Column;
  * @license    https://github.com/Turiknox/magento2-sample-uicomponent/blob/master/LICENSE.md
  * @version    1.0.0
  */
+namespace Turiknox\Sample\Ui\Component\Listing\Column;
+
 use Magento\Framework\View\Element\UiComponent\ContextInterface;
 use Magento\Framework\View\Element\UiComponentFactory;
 use Magento\Ui\Component\Listing\Columns\Column;
@@ -24,7 +25,7 @@ class DataActions extends Column
      *
      * @var \Magento\Framework\UrlInterface
      */
-    protected $_urlBuilder;
+    protected $urlBuilder;
 
     /**
      * @param ContextInterface $context
@@ -39,9 +40,8 @@ class DataActions extends Column
         UrlInterface $urlBuilder,
         array $components = [],
         array $data = []
-    )
-    {
-        $this->_urlBuilder = $urlBuilder;
+    ) {
+        $this->urlBuilder = $urlBuilder;
         parent::__construct($context, $uiComponentFactory, $components, $data);
     }
 
@@ -58,7 +58,7 @@ class DataActions extends Column
                 if (isset($item['data_id'])) {
                     $item[$this->getData('name')] = [
                         'edit' => [
-                            'href' => $this->_urlBuilder->getUrl(
+                            'href' => $this->urlBuilder->getUrl(
                                 static::URL_PATH_EDIT,
                                 [
                                     'data_id' => $item['data_id']
@@ -67,7 +67,7 @@ class DataActions extends Column
                             'label' => __('Edit')
                         ],
                         'delete' => [
-                            'href' => $this->_urlBuilder->getUrl(
+                            'href' => $this->urlBuilder->getUrl(
                                 static::URL_PATH_DELETE,
                                 [
                                     'data_id' => $item['data_id']

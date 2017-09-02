@@ -1,5 +1,4 @@
 <?php
-namespace Turiknox\Sample\Model;
 /*
  * Turiknox_Sample
 
@@ -9,13 +8,13 @@ namespace Turiknox\Sample\Model;
  * @license    https://github.com/Turiknox/magento2-sample-uicomponent/blob/master/LICENSE.md
  * @version    1.0.0
  */
+namespace Turiknox\Sample\Model;
+
 use Magento\Framework\Model\AbstractModel;
 use Turiknox\Sample\Api\Data\DataInterface;
 
-class Data extends AbstractModel
-    implements DataInterface
+class Data extends AbstractModel implements DataInterface
 {
-
     /**
      * Cache tag
      */
@@ -23,9 +22,11 @@ class Data extends AbstractModel
 
     /**
      * Initialise resource model
+     * @codingStandardsIgnoreStart
      */
     protected function _construct()
     {
+        // @codingStandardsIgnoreEnd
         $this->_init('Turiknox\Sample\Model\ResourceModel\Data');
     }
 

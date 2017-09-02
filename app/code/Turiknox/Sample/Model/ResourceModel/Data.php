@@ -1,5 +1,4 @@
 <?php
-namespace Turiknox\Sample\Model\ResourceModel;
 /*
  * Turiknox_Sample
 
@@ -9,6 +8,8 @@ namespace Turiknox\Sample\Model\ResourceModel;
  * @license    https://github.com/Turiknox/magento2-sample-uicomponent/blob/master/LICENSE.md
  * @version    1.0.0
  */
+namespace Turiknox\Sample\Model\ResourceModel;
+
 use Magento\Framework\Model\ResourceModel\Db\Context;
 use Magento\Framework\Model\AbstractModel;
 use Magento\Framework\Stdlib\DateTime\DateTime;
@@ -19,7 +20,7 @@ class Data extends AbstractDb
     /**
      * @var \Magento\Framework\Stdlib\DateTime\DateTime
      */
-    protected $_date;
+    protected $date;
 
     /**
      * Data constructor.
@@ -31,15 +32,17 @@ class Data extends AbstractDb
         Context $context,
         DateTime $date
     ) {
-        $this->_date = $date;
+        $this->date = $date;
         parent::__construct($context);
     }
 
     /**
      * Resource initialisation
+     * @codingStandardsIgnoreStart
      */
     protected function _construct()
     {
+        // @codingStandardsIgnoreEnd
         $this->_init('turiknox_sample_data', 'data_id');
     }
 
@@ -48,12 +51,14 @@ class Data extends AbstractDb
      *
      * @param AbstractModel|\Turiknox\Sample\Model\Data $object
      * @return \Magento\Framework\Model\ResourceModel\Db\AbstractDb
+     * @codingStandardsIgnoreStart
      */
     protected function _beforeSave(AbstractModel $object)
     {
-        $object->setUpdatedAt($this->_date->gmtDate());
+        // @codingStandardsIgnoreEnd
+        $object->setUpdatedAt($this->date->gmtDate());
         if ($object->isObjectNew()) {
-            $object->setCreatedAt($this->_date->gmtDate());
+            $object->setCreatedAt($this->date->gmtDate());
         }
         return parent::_beforeSave($object);
     }

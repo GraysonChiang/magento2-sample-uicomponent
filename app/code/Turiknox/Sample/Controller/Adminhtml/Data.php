@@ -20,9 +20,12 @@ use Turiknox\Sample\Api\DataRepositoryInterface;
 abstract class Data extends Action
 {
     /**
-     * @var string
+     * Authorization level of a basic admin session
+     *
+     * @see _isAllowed()
      */
     const ACTION_RESOURCE = 'Turiknox_Sample::data';
+
     /**
      * Data repository
      *
